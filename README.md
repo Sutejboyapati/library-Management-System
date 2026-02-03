@@ -1,9 +1,11 @@
-Library Management System
+# Library Management System
 
-Project Description
-Library Management System will follow a modular architecture and will make full use of relational database features such as transactional operations and enforced foreign key constraints to ensure data integrity. It will support secure user authentication with role-based access control (RBAC), complete book lifecycle management, review systems, and administrator controls. The backend will be designed to safely handle concurrent borrowing and returning operations by multiple users.
+## Project Description
 
-Tech Stack: 
-Front End- Angular.js
-Back End- Golang
-Database: MySQL
+The Library Management System follows a modular architecture and makes full use of relational database features such as transactional operations and enforced foreign key constraints to ensure data integrity. It supports secure user authentication with role-based access control (RBAC), complete book lifecycle management, review systems, and administrator controls. The backend is designed to safely handle concurrent borrowing and returning operations by multiple users.
+
+## Tech Stack
+
+* **Front End:*Sutej Boyapati* Angular.js
+* **Back End:*Drushtant Swapnil Patil* Golang
+* **Database:*Kaniskha Dhaundiyal* MySQL
