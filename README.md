@@ -6,6 +6,6 @@ The Library Management System follows a modular architecture and makes full use 
 
 ## Tech Stack
 
-* **Front End:*Sutej Boyapati* Angular.js
-* **Back End:*Drushtant Swapnil Patil* Golang
-* **Database:*Kaniskha Dhaundiyal* MySQL
+* **Front End: *Sutej Boyapati* Angular.js
+* **Back End: *Drushtant Swapnil Patil* Golang
+* **Database: *Kaniskha Dhaundiyal* MySQL
