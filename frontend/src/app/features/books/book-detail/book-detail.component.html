@@ -1,0 +1,37 @@
+<div class="book-detail">
+  <a routerLink="/main/books" class="back-link">← Back to books</a>
+  @if (loading) {
+    <p class="loading">Loading...</p>
+  } @else if (book) {
+    <h2>{{ book.title }}</h2>
+    <p class="author">by {{ book.author }}</p>
+    <dl class="meta">
+      <dt>Available copies</dt>
+      <dd>{{ book.available_copies }}</dd>
+      @if (book.genre) {
+        <dt>Genre</dt>
+        <dd>{{ book.genre }}</dd>
+      }
+      @if (book.language) {
+        <dt>Language</dt>
+        <dd>{{ book.language }}</dd>
+      }
+      @if (book.shelf_number) {
+        <dt>Shelf</dt>
+        <dd>{{ book.shelf_number }}</dd>
+      }
+      @if (book.isbn) {
+        <dt>ISBN</dt>
+        <dd>{{ book.isbn }}</dd>
+      }
+    </dl>
+    @if (message) {
+      <p class="message" [class.error-message]="message.startsWith('Failed') || message.includes('error')">{{ message }}</p>
+    }
+    @if (!isAdmin && auth.isLoggedIn() && available > 0) {
+      <button type="button" class="btn-borrow" (click)="borrow()" [disabled]="actionLoading">
+        {{ actionLoading ? 'Borrowing...' : 'Borrow this book' }}
+      </button>
+    }
+  }
+</div>

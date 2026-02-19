@@ -1,0 +1,25 @@
+<div class="dashboard">
+  <div class="dashboard-welcome">
+    <h2>Welcome, {{ auth.user()?.username ?? 'User' }}</h2>
+    <p class="subtitle">Your Library Management System</p>
+  </div>
+  <div class="quick-links">
+    <a routerLink="/main/books" class="card card-books">
+      <span class="card-icon">📚</span>
+      <span class="card-title">Browse books</span>
+      <span class="card-desc">Search and borrow from the catalog</span>
+    </a>
+    <a routerLink="/main/my-borrowings" class="card card-borrowings">
+      <span class="card-icon">📖</span>
+      <span class="card-title">My borrowings</span>
+      <span class="card-desc">View and return borrowed books</span>
+    </a>
+    @if (auth.isAdmin()) {
+      <a routerLink="/main/admin/books" class="card card-admin">
+        <span class="card-icon">⚙️</span>
+        <span class="card-title">Manage books</span>
+        <span class="card-desc">Add, edit, or remove books</span>
+      </a>
+    }
+  </div>
+</div>

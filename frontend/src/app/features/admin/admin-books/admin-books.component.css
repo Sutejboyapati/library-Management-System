@@ -1,0 +1,77 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.btn-primary {
+  padding: 8px 16px;
+  background: #FF4813;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #e63e0a;
+}
+
+.books-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.books-table th,
+.books-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.books-table th {
+  font-weight: 600;
+  color: #333;
+  background: #f8f9fa;
+}
+
+.btn-link {
+  margin-right: 12px;
+  color: #0021A5;
+  font-size: 0.9rem;
+}
+
+.btn-danger {
+  padding: 4px 10px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.btn-danger:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading, .empty {
+  color: #666;
+  margin: 1rem 0;
+}
+
+.message {
+  margin-bottom: 1rem;
+}

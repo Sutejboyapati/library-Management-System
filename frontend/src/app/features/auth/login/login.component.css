@@ -1,0 +1,197 @@
+/* UF colors: Blue #0021A5 (PMS 287), Orange #FF4813 (PMS 172 C) */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(145deg, #0021A5 0%, #001a85 40%, #0d1b4b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 80%, rgba(255, 72, 19, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.login-container {
+  display: flex;
+  max-width: 920px;
+  width: 95%;
+  min-height: 500px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.login-left {
+  flex: 1;
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #0021A5;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 33, 165, 0.2));
+}
+
+.tagline {
+  color: #555;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.login-form label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.4rem;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #0021A5;
+  box-shadow: 0 0 0 3px rgba(0, 33, 165, 0.15);
+}
+
+.login-form .error-message {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+  padding: 10px 12px;
+  background: #fef2f2;
+  border-radius: 8px;
+  border-left: 4px solid #dc2626;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 0.5rem;
+  background: #FF4813;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.login-form button:hover:not(:disabled) {
+  background: #e63e0a;
+}
+
+.login-form button:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.login-form button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.login-right {
+  width: 300px;
+  background: #0021A5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
+}
+
+.signup-box {
+  text-align: center;
+  color: #fff;
+}
+
+.signup-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.95;
+}
+
+.signup-box h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.signup-box p {
+  margin: 0 0 1.5rem;
+  opacity: 0.95;
+  font-size: 0.95rem;
+}
+
+.btn-signup {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #FF4813;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-signup:hover {
+  background: #e63e0a;
+  text-decoration: none;
+  transform: scale(1.02);
+}
+
+.demo-hint {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.btn-seed {
+  background: none;
+  border: none;
+  color: #0021A5;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+}
+
+.btn-seed:hover {
+  color: #001a85;
+}
+
+.seed-msg {
+  display: block;
+  margin-top: 0.5rem;
+  color: #166534;
+  font-size: 0.85rem;
+}

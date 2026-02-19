@@ -1,0 +1,8 @@
+<header class="layout-header">
+  <h1 class="app-title"><span class="header-logo">📚</span> Library Management</h1>
+  <div class="header-right">
+    <span class="user-name">{{ auth.user()?.username ?? 'User' }}</span>
+    <span class="user-role">({{ auth.user()?.role ?? 'user' }})</span>
+    <button type="button" class="btn-logout" (click)="auth.logout()">Log out</button>
+  </div>
+</header>

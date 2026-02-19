@@ -1,0 +1,51 @@
+<div class="register-page">
+  <div class="register-bg-pattern"></div>
+  <div class="register-container">
+    <div class="register-header">
+      <span class="register-icon">📚</span>
+      <h1>Create your account</h1>
+    </div>
+    <p class="subtitle">Join us for a seamless library experience.</p>
+    <form class="register-form" (ngSubmit)="onSubmit()">
+      <label for="username">Username</label>
+      <input
+        id="username"
+        type="text"
+        placeholder="Username"
+        [(ngModel)]="username"
+        name="username"
+        [disabled]="loading"
+      />
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Create a password"
+        [(ngModel)]="password"
+        name="password"
+        [disabled]="loading"
+      />
+      <label for="confirm">Confirm password</label>
+      <input
+        id="confirm"
+        type="password"
+        placeholder="Confirm password"
+        [(ngModel)]="confirmPassword"
+        name="confirmPassword"
+        [disabled]="loading"
+      />
+      @if (error) {
+        <p class="error-message">{{ error }}</p>
+      }
+      @if (success) {
+        <p class="success-message">{{ success }}</p>
+      }
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Creating account...' : 'Sign up' }}
+      </button>
+    </form>
+    <p class="login-link">
+      Already have an account? <a routerLink="/login">Log in</a>
+    </p>
+  </div>
+</div>

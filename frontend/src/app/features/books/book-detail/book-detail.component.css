@@ -1,0 +1,60 @@
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #0021A5;
+}
+
+.book-detail h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+}
+
+.author {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta dt {
+  margin: 0;
+  color: #666;
+  font-weight: 500;
+}
+
+.meta dd {
+  margin: 0;
+}
+
+.message {
+  margin: 1rem 0;
+}
+
+.btn-borrow {
+  padding: 10px 20px;
+  background: #FF4813;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.btn-borrow:hover:not(:disabled) {
+  background: #e63e0a;
+}
+
+.btn-borrow:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading {
+  color: #666;
+}

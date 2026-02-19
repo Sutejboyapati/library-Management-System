@@ -1,0 +1,36 @@
+<div class="my-borrowings">
+  <h2>My borrowings</h2>
+  @if (message) {
+    <p class="message">{{ message }}</p>
+  }
+  @if (loading) {
+    <p class="loading">Loading...</p>
+  } @else if (activeRecords().length === 0) {
+    <p class="empty">You have no active borrowings.</p>
+  } @else {
+    <ul class="borrow-list">
+      @for (record of activeRecords(); track record.book_id + (record.borrowed_at ?? '')) {
+        <li class="borrow-item">
+          <div class="borrow-info">
+            <strong>{{ record.title ?? 'Book #' + record.book_id }}</strong>
+            @if (record.author) {
+              <span class="author"> – {{ record.author }}</span>
+            }
+            <div class="dates">
+              Borrowed: {{ record.borrowed_at | date:'mediumDate' }}
+              · Due: {{ record.due_date | date:'mediumDate' }}
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn-return"
+            (click)="returnBook(record)"
+            [disabled]="actionLoading === record.book_id"
+          >
+            {{ actionLoading === record.book_id ? 'Returning...' : 'Return' }}
+          </button>
+        </li>
+      }
+    </ul>
+  }
+</div>

@@ -1,0 +1,141 @@
+/* UF colors: Blue #0021A5 (PMS 287), Orange #FF4813 (PMS 172 C) */
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(145deg, #0021A5 0%, #001a85 40%, #0d1b4b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 80% 20%, rgba(255, 72, 19, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 440px;
+  padding: 48px 40px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.register-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.register-icon {
+  font-size: 2rem;
+}
+
+.register-container h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #0021A5;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.register-form label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.4rem;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.register-form input:focus {
+  outline: none;
+  border-color: #0021A5;
+  box-shadow: 0 0 0 3px rgba(0, 33, 165, 0.15);
+}
+
+.register-form .error-message {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+  padding: 10px 12px;
+  background: #fef2f2;
+  border-radius: 8px;
+  border-left: 4px solid #dc2626;
+}
+
+.register-form .success-message {
+  color: #166534;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+  padding: 10px 12px;
+  background: #f0fdf4;
+  border-radius: 8px;
+  border-left: 4px solid #22c55e;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 0.5rem;
+  background: #FF4813;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.register-form button:hover:not(:disabled) {
+  background: #e63e0a;
+}
+
+.register-form button:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.register-form button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.login-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-link a {
+  color: #0021A5;
+  font-weight: 600;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
