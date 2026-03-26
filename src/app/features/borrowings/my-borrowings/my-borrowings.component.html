@@ -1,0 +1,83 @@
+<div class="my-borrowings">
+  <h1 id="borrow-heading">My borrowings</h1>
+  <p class="intro">Active loans and your return history in one place.</p>
+
+  <div class="tabs" role="tablist" aria-label="Borrowing sections">
+    <button
+      type="button"
+      role="tab"
+      [attr.aria-selected]="tab === 'active'"
+      [class.active]="tab === 'active'"
+      (click)="tab = 'active'"
+    >
+      Active ({{ activeRecords().length }})
+    </button>
+    <button
+      type="button"
+      role="tab"
+      [attr.aria-selected]="tab === 'history'"
+      [class.active]="tab === 'history'"
+      (click)="tab = 'history'"
+    >
+      History ({{ pastRecords().length }})
+    </button>
+  </div>
+
+  @if (message) {
+    <p class="message" role="status">{{ message }}</p>
+  }
+  @if (loading) {
+    <p class="loading" role="status">Loading…</p>
+  } @else if (tab === 'active') {
+    @if (activeRecords().length === 0) {
+      <p class="empty">You have no active borrowings.</p>
+    } @else {
+      <ul class="borrow-list" aria-labelledby="borrow-heading">
+        @for (record of activeRecords(); track record.book_id + (record.borrowed_at ?? '')) {
+          <li class="borrow-item">
+            <div class="borrow-info">
+              <strong>{{ record.title ?? 'Book #' + record.book_id }}</strong>
+              @if (record.author) {
+                <span class="author"> – {{ record.author }}</span>
+              }
+              <div class="dates">
+                Borrowed: {{ record.borrowed_at | date: 'mediumDate' }}
+                · Due: {{ record.due_date | date: 'mediumDate' }}
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn-return"
+              (click)="returnBook(record)"
+              [disabled]="actionLoading === record.book_id"
+            >
+              {{ actionLoading === record.book_id ? 'Returning…' : 'Return' }}
+            </button>
+          </li>
+        }
+      </ul>
+    }
+  } @else {
+    @if (pastRecords().length === 0) {
+      <p class="empty">No returned books yet.</p>
+    } @else {
+      <ul class="borrow-list history-list" aria-label="Returned books">
+        @for (record of pastRecords(); track record.book_id + (record.borrowed_at ?? '') + (record.returned_at ?? '')) {
+          <li class="borrow-item history-item">
+            <div class="borrow-info">
+              <strong>{{ record.title ?? 'Book #' + record.book_id }}</strong>
+              @if (record.author) {
+                <span class="author"> – {{ record.author }}</span>
+              }
+              <div class="dates">
+                Returned: {{ record.returned_at | date: 'mediumDate' }}
+                · Was due: {{ record.due_date | date: 'mediumDate' }}
+              </div>
+            </div>
+            <span class="badge-returned">Returned</span>
+          </li>
+        }
+      </ul>
+    }
+  }
+</div>

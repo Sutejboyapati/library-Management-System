@@ -1,0 +1,47 @@
+<div class="favorites-page">
+  <div class="page-header">
+    <div>
+      <h1 id="favorites-heading">Saved books</h1>
+      <p class="page-desc">Titles you starred for quick access (stored on this device).</p>
+    </div>
+    <a routerLink="/main/books" class="link-back">← Back to catalog</a>
+  </div>
+
+  @if (loading) {
+    <p class="muted">Loading…</p>
+  } @else if (favorites.ids().length === 0) {
+    <div class="empty-card" role="status">
+      <span class="empty-icon" aria-hidden="true">⭐</span>
+      <p>No saved books yet.</p>
+      <p class="hint">Browse the catalog and tap the star on any book card to save it here.</p>
+      <a routerLink="/main/books" class="btn-primary">Browse books</a>
+    </div>
+  } @else if (books.length === 0) {
+    <div class="empty-card" role="status">
+      <p>Some saved titles may no longer be in the catalog.</p>
+      <button type="button" class="btn-ghost" (click)="load()">Refresh</button>
+    </div>
+  } @else {
+    <ul class="fav-grid" aria-labelledby="favorites-heading">
+      @for (book of books; track book.id) {
+        <li>
+          <a [routerLink]="['/main/books', book.id]" class="fav-card">
+            <button
+              type="button"
+              class="star-btn"
+              [attr.aria-label]="'Remove ' + book.title + ' from saved'"
+              (click)="toggleFavorite($event, book.id)"
+            >
+              ★
+            </button>
+            <h2 class="title">{{ book.title }}</h2>
+            <p class="author">{{ book.author }}</p>
+            @if (book.genre) {
+              <p class="genre">{{ book.genre }}</p>
+            }
+          </a>
+        </li>
+      }
+    </ul>
+  }
+</div>

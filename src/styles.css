@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+/* UF brand: Blue PMS 287 #0021A5, Orange PMS 172 #FF4813 — plus lighter/darker shades */
+:root {
+  --uf-blue: #0021a5;
+  --uf-blue-dark: #001263;
+  --uf-blue-darker: #000d4a;
+  --uf-blue-mid: #0033cc;
+  --uf-blue-bright: #1a3dcc;
+  --uf-blue-light: #4d6fd4;
+  --uf-blue-soft: #a8b8f0;
+  --uf-blue-tint: #e8ecff;
+  --uf-blue-tint-2: #f2f4ff;
+
+  --uf-orange: #ff4813;
+  --uf-orange-dark: #d93a0a;
+  --uf-orange-darker: #b32f08;
+  --uf-orange-mid: #ff5c2e;
+  --uf-orange-light: #ff7a4d;
+  --uf-orange-soft: #ffc9b8;
+  --uf-orange-tint: #fff0eb;
+
+  --bg: var(--uf-blue-tint-2);
+  --surface: #ffffff;
+  --text: #0f1a4a;
+  --muted: #4a5688;
+  --brand: var(--uf-blue);
+  --brand-2: var(--uf-blue-mid);
+  --accent: var(--uf-orange);
+  --success: #1f9d6a;
+  --danger: #c62856;
+  --ring: rgba(0, 33, 165, 0.22);
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(circle at 5% 0%, rgba(0, 33, 165, 0.12), transparent 36%),
+    radial-gradient(circle at 95% 10%, rgba(255, 72, 19, 0.08), transparent 32%),
+    var(--bg);
+  color: var(--text);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Quicksand', 'Nunito', sans-serif;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.error-message {
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+.success-message {
+  color: var(--success);
+  font-size: 0.9rem;
+}
+
+/* Accessibility preference classes (set by AccessibilityService) */
+html.a11y-font-large body {
+  font-size: 106.25%;
+}
+
+html.a11y-font-xlarge body {
+  font-size: 118.75%;
+}
+
+html.a11y-high-contrast {
+  --text: #000000;
+  --muted: #1a1a1a;
+  --bg: #ffffff;
+}
+
+html.a11y-high-contrast body {
+  background: #ffffff;
+  color: #000000;
+}
+
+html.a11y-high-contrast .main-content,
+html.a11y-high-contrast .sidebar,
+html.a11y-high-contrast .layout-header {
+  border-width: 2px;
+  border-color: #000000;
+}
+
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}

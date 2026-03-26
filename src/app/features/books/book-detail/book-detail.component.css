@@ -1,0 +1,134 @@
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #0021a5;
+  font-weight: 700;
+}
+
+.detail-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.book-detail h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.7rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.fav-btn-detail {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #c8d4f5;
+  background: #fff;
+  font-weight: 700;
+  color: #0021a5;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.fav-btn-detail[aria-pressed='true'] {
+  background: #fff0eb;
+  border-color: #ffb89e;
+  color: #d93a0a;
+}
+
+.notes-block {
+  margin: 1.25rem 0 1rem;
+  padding: 1rem;
+  background: #f8f9ff;
+  border: 1px solid #d8e0fb;
+  border-radius: 12px;
+}
+
+.notes-block label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.notes-hint {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: #6a7190;
+}
+
+.notes-block textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #c8d4f5;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 88px;
+}
+
+.notes-block textarea:focus {
+  outline: none;
+  border-color: #0021a5;
+  box-shadow: 0 0 0 3px rgba(0, 33, 165, 0.15);
+}
+
+.author {
+  color: #5b6382;
+  margin-bottom: 1.5rem;
+}
+
+.book-detail {
+  padding: 14px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #d8e0fb;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta dt {
+  margin: 0;
+  color: #6a7190;
+  font-weight: 700;
+}
+
+.meta dd {
+  margin: 0;
+}
+
+.message {
+  margin: 1rem 0;
+}
+
+.btn-borrow {
+  padding: 10px 20px;
+  background: linear-gradient(120deg, #ff4813, #ff6b3d);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.btn-borrow:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(255, 72, 19, 0.32);
+}
+
+.btn-borrow:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading {
+  color: #666;
+}

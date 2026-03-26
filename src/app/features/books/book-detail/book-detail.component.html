@@ -1,0 +1,67 @@
+<div class="book-detail">
+  <a routerLink="/main/books" class="back-link">← Back to books</a>
+  @if (loading) {
+    <p class="loading" role="status">Loading…</p>
+  } @else if (book) {
+    <div class="detail-header">
+      <h2 [attr.id]="'book-title-' + book.id">{{ book.title }}</h2>
+      <button
+        type="button"
+        class="fav-btn-detail"
+        (click)="toggleFavorite()"
+        [attr.aria-pressed]="favorites.ids().includes(book.id)"
+        [attr.aria-label]="favorites.ids().includes(book.id) ? 'Remove from saved books' : 'Save book'"
+      >
+        {{ favorites.ids().includes(book.id) ? '★ Saved' : '☆ Save book' }}
+      </button>
+    </div>
+    <p class="author">by {{ book.author }}</p>
+    <dl class="meta" [attr.aria-labelledby]="'book-title-' + book.id">
+      <dt>Available copies</dt>
+      <dd>{{ book.available_copies }}</dd>
+      @if (book.genre) {
+        <dt>Genre</dt>
+        <dd>{{ book.genre }}</dd>
+      }
+      @if (book.language) {
+        <dt>Language</dt>
+        <dd>{{ book.language }}</dd>
+      }
+      @if (book.shelf_number) {
+        <dt>Shelf</dt>
+        <dd>{{ book.shelf_number }}</dd>
+      }
+      @if (book.isbn) {
+        <dt>ISBN</dt>
+        <dd>{{ book.isbn }}</dd>
+      }
+    </dl>
+
+    <section class="notes-block" aria-label="Personal notes">
+      <label for="book-note">My notes</label>
+      <p class="notes-hint">Private notes stored in your browser on this device only.</p>
+      <textarea
+        id="book-note"
+        rows="4"
+        [(ngModel)]="noteText"
+        (blur)="saveNote()"
+        placeholder="Reading goals, reminders, or anything you want to remember…"
+      ></textarea>
+    </section>
+
+    @if (message) {
+      <p
+        class="message"
+        role="status"
+        [class.error-message]="message.startsWith('Failed') || message.includes('error')"
+      >
+        {{ message }}
+      </p>
+    }
+    @if (!isAdmin && auth.isLoggedIn() && available > 0) {
+      <button type="button" class="btn-borrow" (click)="borrow()" [disabled]="actionLoading">
+        {{ actionLoading ? 'Borrowing…' : 'Borrow this book' }}
+      </button>
+    }
+  }
+</div>

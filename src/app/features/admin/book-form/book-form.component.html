@@ -1,0 +1,33 @@
+<div class="book-form">
+  <a routerLink="/main/admin/books" class="back-link">← Back to books</a>
+  <h2>{{ isEdit ? 'Edit book' : 'Add book' }}</h2>
+  @if (loading) {
+    <p class="loading">Loading...</p>
+  } @else {
+    <form (ngSubmit)="onSubmit()">
+      <label for="title">Title *</label>
+      <input id="title" type="text" [(ngModel)]="title" name="title" required />
+      <label for="author">Author *</label>
+      <input id="author" type="text" [(ngModel)]="author" name="author" required />
+      <label for="isbn">ISBN</label>
+      <input id="isbn" type="text" [(ngModel)]="isbn" name="isbn" />
+      <label for="genre">Genre</label>
+      <input id="genre" type="text" [(ngModel)]="genre" name="genre" />
+      <label for="language">Language</label>
+      <input id="language" type="text" [(ngModel)]="language" name="language" />
+      <label for="shelf">Shelf number</label>
+      <input id="shelf" type="text" [(ngModel)]="shelf_number" name="shelf_number" />
+      <label for="copies">Available copies</label>
+      <input id="copies" type="number" min="0" [(ngModel)]="available_copies" name="available_copies" />
+      @if (error) {
+        <p class="error-message">{{ error }}</p>
+      }
+      <div class="form-actions">
+        <button type="submit" [disabled]="submitLoading">
+          {{ submitLoading ? 'Saving...' : (isEdit ? 'Update' : 'Add book') }}
+        </button>
+        <a routerLink="/main/admin/books" class="btn-cancel">Cancel</a>
+      </div>
+    </form>
+  }
+</div>
