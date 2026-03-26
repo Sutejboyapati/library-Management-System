@@ -1,0 +1,107 @@
+.my-borrowings h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.65rem;
+}
+
+.intro {
+  margin: 0 0 1.25rem;
+  color: #6a7190;
+  font-size: 0.95rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid #c8d4f5;
+  background: #fff;
+  font-weight: 700;
+  color: #4a5688;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: linear-gradient(120deg, #0021a5, #0033cc);
+  color: #fff;
+  border-color: transparent;
+}
+
+.history-item {
+  align-items: center;
+}
+
+.badge-returned {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #e8ecff;
+  color: #0021a5;
+}
+
+.borrow-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.borrow-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #fff;
+  border: 1px solid #d8e0fb;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 33, 165, 0.06);
+}
+
+.borrow-info .author {
+  color: #5b6382;
+  font-weight: normal;
+}
+
+.dates {
+  font-size: 0.875rem;
+  color: #6a7190;
+  margin-top: 0.35rem;
+}
+
+.btn-return {
+  padding: 8px 16px;
+  background: linear-gradient(120deg, #ff4813, #ff6b3d);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.btn-return:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(255, 72, 19, 0.32);
+}
+
+.btn-return:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading, .empty {
+  color: #666;
+  margin: 1rem 0;
+}
+
+.message {
+  margin-bottom: 1rem;
+}

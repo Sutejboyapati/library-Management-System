@@ -1,0 +1,82 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.btn-primary {
+  padding: 8px 16px;
+  background: linear-gradient(120deg, #0021a5, #0033cc);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 33, 165, 0.28);
+  text-decoration: none;
+}
+
+.books-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.books-table th,
+.books-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.books-table th {
+  font-weight: 700;
+  color: #2c3156;
+  background: #e8ecff;
+}
+
+.btn-link {
+  margin-right: 12px;
+  color: #0021a5;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.btn-danger {
+  padding: 4px 10px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.btn-danger:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading, .empty {
+  color: #666;
+  margin: 1rem 0;
+}
+
+.message {
+  margin-bottom: 1rem;
+}

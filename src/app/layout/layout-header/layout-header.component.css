@@ -1,0 +1,56 @@
+.layout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid #d8e0fb;
+  backdrop-filter: blur(6px);
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0021a5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-logo {
+  font-size: 1.35rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  font-weight: 700;
+  color: #2c3156;
+}
+
+.user-role {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.btn-logout {
+  padding: 8px 15px;
+  background: #fff;
+  border: 1px solid #c8d4f5;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0021a5;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background: #fff0eb;
+  border-color: #ff4813;
+  color: #d93a0a;
+}

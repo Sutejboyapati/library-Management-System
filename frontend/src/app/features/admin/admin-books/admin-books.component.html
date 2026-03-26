@@ -1,0 +1,47 @@
+<div class="admin-books">
+  <div class="page-header">
+    <h2>Manage books</h2>
+    <a routerLink="/main/admin/books/new" class="btn-primary">Add book</a>
+  </div>
+  @if (message) {
+    <p class="message">{{ message }}</p>
+  }
+  @if (loading) {
+    <p class="loading">Loading...</p>
+  } @else if (books.length === 0) {
+    <p class="empty">No books. <a routerLink="/main/admin/books/new">Add one</a>.</p>
+  } @else {
+    <table class="books-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Available</th>
+          <th>Genre</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of books; track book.id) {
+          <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.available_copies }}</td>
+            <td>{{ book.genre ?? '–' }}</td>
+            <td>
+              <a [routerLink]="['/main/admin/books/edit', book.id]" class="btn-link">Edit</a>
+              <button
+                type="button"
+                class="btn-danger"
+                (click)="deleteBook(book)"
+                [disabled]="deleteLoading === book.id"
+              >
+                {{ deleteLoading === book.id ? 'Deleting...' : 'Delete' }}
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

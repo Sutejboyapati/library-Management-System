@@ -1,0 +1,136 @@
+<div class="book-list">
+  <div class="page-header">
+    <div class="page-title-wrap">
+      <h2 id="catalog-heading">📚 Browse catalog</h2>
+      <p class="page-desc">Search, filter, sort, and save books you care about</p>
+    </div>
+    <div class="search-bar">
+      <label class="visually-hidden" for="catalog-search">Search books</label>
+      <input
+        id="catalog-search"
+        type="search"
+        placeholder="Search by title or author..."
+        [(ngModel)]="search"
+        (keyup.enter)="onSearch()"
+        autocomplete="off"
+      />
+      <button type="button" (click)="onSearch()">Search</button>
+    </div>
+  </div>
+
+  @if (!loading && !loadError && books.length > 0) {
+    <div class="catalog-toolbar" role="region" aria-label="Catalog filters">
+      <div class="toolbar-row">
+        <label class="toolbar-label" for="sort-by">Sort by</label>
+        <select id="sort-by" [(ngModel)]="sortBy">
+          <option value="title">Title (A–Z)</option>
+          <option value="titleDesc">Title (Z–A)</option>
+          <option value="author">Author (A–Z)</option>
+          <option value="copies">Most copies available</option>
+        </select>
+
+        <label class="toolbar-label" for="genre-filter">Genre</label>
+        <select id="genre-filter" [(ngModel)]="genreFilter">
+          <option value="">All genres</option>
+          @for (g of genres; track g) {
+            <option [value]="g">{{ g }}</option>
+          }
+        </select>
+
+        <label class="toggle-inline">
+          <input type="checkbox" [(ngModel)]="inStockOnly" />
+          <span>In stock only</span>
+        </label>
+
+        <label class="toggle-inline">
+          <input type="checkbox" [(ngModel)]="favoritesOnly" [disabled]="favorites.ids().length === 0" />
+          <span>Saved only ({{ favorites.ids().length }})</span>
+        </label>
+      </div>
+
+      <div class="toolbar-row view-row">
+        <span class="toolbar-label" id="view-mode-label">View</span>
+        <div class="segmented" role="group" aria-labelledby="view-mode-label">
+          <button
+            type="button"
+            [class.active]="viewMode === 'grid'"
+            (click)="viewMode = 'grid'"
+            [attr.aria-pressed]="viewMode === 'grid'"
+          >
+            Grid
+          </button>
+          <button
+            type="button"
+            [class.active]="viewMode === 'list'"
+            (click)="viewMode = 'list'"
+            [attr.aria-pressed]="viewMode === 'list'"
+          >
+            List
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (loading) {
+    <div class="loading-state" role="status" aria-live="polite">
+      <span class="loading-spinner" aria-hidden="true"></span>
+      <p>Loading books…</p>
+    </div>
+  } @else if (loadError) {
+    <div class="empty-state error-state" role="alert">
+      <span class="empty-icon" aria-hidden="true">⚠️</span>
+      <p>{{ loadError }}</p>
+      <p class="empty-hint">Start the backend with: <code>cd backend && go run .</code></p>
+    </div>
+  } @else if (books.length === 0) {
+    <div class="empty-state">
+      <span class="empty-icon" aria-hidden="true">📭</span>
+      <p>No books found.</p>
+      <p class="empty-hint">Try another search keyword or ask an admin to add more books.</p>
+    </div>
+  } @else if (filteredBooks.length === 0) {
+    <div class="empty-state" role="status">
+      <span class="empty-icon" aria-hidden="true">🔎</span>
+      <p>No books match your filters.</p>
+      <p class="empty-hint">Clear genre filter, uncheck “saved only”, or adjust sort options.</p>
+    </div>
+  } @else {
+    <div
+      [class.books-grid]="viewMode === 'grid'"
+      [class.books-list]="viewMode === 'list'"
+      class="books-layout"
+      aria-labelledby="catalog-heading"
+    >
+      @for (book of filteredBooks; track book.id) {
+        <div class="book-card-shell">
+          <button
+            type="button"
+            class="star-btn"
+            [class.is-fav]="favorites.ids().includes(book.id)"
+            [attr.aria-label]="
+              favorites.ids().includes(book.id) ? 'Remove from saved: ' + book.title : 'Save: ' + book.title
+            "
+            (click)="toggleFavorite($event, book.id)"
+          >
+            {{ favorites.ids().includes(book.id) ? '★' : '☆' }}
+          </button>
+          <a [routerLink]="['/main/books', book.id]" class="book-card">
+            <span
+              class="book-badge"
+              [class.available]="book.available_copies > 0"
+              [class.unavailable]="book.available_copies === 0"
+            >
+              {{ book.available_copies > 0 ? book.available_copies + ' available' : 'Out of stock' }}
+            </span>
+            <h3 class="book-title">{{ book.title }}</h3>
+            <p class="book-author">{{ book.author }}</p>
+            @if (book.genre) {
+              <p class="book-genre">{{ book.genre }}</p>
+            }
+          </a>
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,50 @@
+<div class="login-page">
+  <div class="bubble bubble-a"></div>
+  <div class="bubble bubble-b"></div>
+  <div class="bubble bubble-c"></div>
+  <div class="login-container">
+    <div class="login-left">
+      <div class="logo">
+        <span class="logo-icon">📚✨</span>
+        BookVerse
+      </div>
+      <p class="tagline">Read more. Manage smart. Enjoy your campus library experience.</p>
+      <form class="login-form" (ngSubmit)="onSubmit()">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          data-cy="username-input"
+          type="text"
+          placeholder="Enter your username"
+          [(ngModel)]="username"
+          name="username"
+          [disabled]="loading"
+        />
+        <label for="password">Password</label>
+        <input
+          id="password"
+          data-cy="password-input"
+          type="password"
+          placeholder="Enter your password"
+          [(ngModel)]="password"
+          name="password"
+          [disabled]="loading"
+        />
+        @if (error) {
+          <p class="error-message">{{ error }}</p>
+        }
+        <button type="submit" [disabled]="loading" data-cy="login-submit">
+          {{ loading ? 'Logging in...' : 'Login' }}
+        </button>
+      </form>
+    </div>
+    <div class="login-right">
+      <div class="signup-box">
+        <div class="signup-icon">🌈</div>
+        <h2>New around here?</h2>
+        <p>Create your reader profile and start borrowing in seconds.</p>
+        <a routerLink="/register" class="btn-signup">Create account</a>
+      </div>
+    </div>
+  </div>
+</div>

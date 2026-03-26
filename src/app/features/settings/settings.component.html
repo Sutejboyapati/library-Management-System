@@ -1,0 +1,79 @@
+<div class="settings-page">
+  <h1 id="settings-heading">Settings &amp; accessibility</h1>
+  <p class="lead">Customize how the app looks and feels. Export your data for your records.</p>
+
+  <section class="card" aria-labelledby="a11y-display">
+    <h2 id="a11y-display">Display</h2>
+    <fieldset class="field-group">
+      <legend>Text size</legend>
+      <div class="btn-row" role="group" aria-label="Text size">
+        <button
+          type="button"
+          class="chip"
+          [class.active]="a11y.fontScale() === 'normal'"
+          (click)="setFont('normal')"
+        >
+          Default
+        </button>
+        <button
+          type="button"
+          class="chip"
+          [class.active]="a11y.fontScale() === 'large'"
+          (click)="setFont('large')"
+        >
+          Large
+        </button>
+        <button
+          type="button"
+          class="chip"
+          [class.active]="a11y.fontScale() === 'xlarge'"
+          (click)="setFont('xlarge')"
+        >
+          Larger
+        </button>
+      </div>
+    </fieldset>
+
+    <label class="toggle">
+      <input
+        type="checkbox"
+        [checked]="a11y.highContrast()"
+        (change)="setContrast($any($event.target).checked)"
+      />
+      <span>High contrast (stronger text and borders)</span>
+    </label>
+
+    <label class="toggle">
+      <input
+        type="checkbox"
+        [checked]="a11y.reduceMotion()"
+        (change)="setMotion($any($event.target).checked)"
+      />
+      <span>Reduce motion (less animation)</span>
+    </label>
+  </section>
+
+  <section class="card" aria-labelledby="data-export">
+    <h2 id="data-export">Your borrowing history</h2>
+    <p class="hint">Download a CSV file of your borrowing records (from the server).</p>
+    <button
+      type="button"
+      class="btn-export"
+      (click)="exportBorrowingHistory()"
+      [disabled]="exportLoading"
+    >
+      {{ exportLoading ? 'Preparing…' : 'Export CSV' }}
+    </button>
+    @if (exportMessage) {
+      <p class="export-msg" role="status">{{ exportMessage }}</p>
+    }
+  </section>
+
+  <section class="card tips" aria-labelledby="tips-heading">
+    <h2 id="tips-heading">Keyboard</h2>
+    <ul>
+      <li>Use <kbd>Tab</kbd> to move between interactive controls.</li>
+      <li>Use the “Skip to main content” link at the top of the page (appears when focused).</li>
+    </ul>
+  </section>
+</div>

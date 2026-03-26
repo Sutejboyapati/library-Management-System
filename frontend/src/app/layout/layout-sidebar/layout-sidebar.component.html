@@ -1,0 +1,22 @@
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <span class="sidebar-logo">📚</span>
+    <span class="sidebar-title">Library Management</span>
+  </div>
+  <ul>
+    <li>
+      <a routerLink="/main/dashboard" routerLinkActive="active">Dashboard</a>
+    </li>
+    <li>
+      <a routerLink="/main/books" routerLinkActive="active">Books</a>
+    </li>
+    <li>
+      <a routerLink="/main/my-borrowings" routerLinkActive="active">My borrowings</a>
+    </li>
+    @if (auth.isAdmin()) {
+      <li>
+        <a routerLink="/main/admin/books" routerLinkActive="active">Admin – Books</a>
+      </li>
+    }
+  </ul>
+</nav>
