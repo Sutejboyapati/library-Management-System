@@ -1,0 +1,55 @@
+<div class="login-page">
+  <div class="login-bg-pattern"></div>
+  <div class="login-container">
+    <div class="login-left">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        Library Management
+      </div>
+      <p class="tagline">Library Management System — Your gateway to knowledge</p>
+      <form class="login-form" (ngSubmit)="onSubmit()">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="Enter your username"
+          [(ngModel)]="username"
+          name="username"
+          [disabled]="loading"
+          data-testid="login-username"
+        />
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter your password"
+          [(ngModel)]="password"
+          name="password"
+          [disabled]="loading"
+          data-testid="login-password"
+        />
+        @if (error) {
+          <p class="error-message">{{ error }}</p>
+        }
+        <button type="submit" [disabled]="loading" data-testid="login-submit">
+          {{ loading ? 'Logging in...' : 'Login' }}
+        </button>
+        <p class="demo-hint">
+          <button type="button" class="btn-seed" (click)="loadDemoData()" data-testid="seed-demo-data">Load demo data</button>
+          <button type="button" class="btn-seed" (click)="loadDemoData(true)">Force reload books</button>
+          @if (seedMessage) {
+            <span class="seed-msg">{{ seedMessage }}</span>
+          }
+        </p>
+      </form>
+    </div>
+    <div class="login-right">
+      <div class="signup-box">
+        <div class="signup-icon">📖</div>
+        <h2>New here?</h2>
+        <p>Create an account and discover thousands of books.</p>
+        <a routerLink="/register" class="btn-signup">Create account</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="book-list">
+  <div class="page-header">
+    <div class="page-title-wrap">
+      <h2>📚 Browse Catalog</h2>
+      <p class="page-desc">Find your next great read</p>
+    </div>
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Search by title or author..."
+        [(ngModel)]="search"
+        (keyup.enter)="onSearch()"
+        data-testid="book-search-input"
+      />
+      <button type="button" (click)="onSearch()" data-testid="book-search-button">Search</button>
+    </div>
+  </div>
+  <label class="filter-toggle">
+    <input type="checkbox" [(ngModel)]="showAvailableOnly" />
+    Show only books with available copies
+  </label>
+  <p class="result-summary">Showing {{ visibleBooks.length }} of {{ books.length }} books</p>
+  @if (loading) {
+    <div class="loading-state">
+      <span class="loading-spinner"></span>
+      <p>Loading books...</p>
+    </div>
+  } @else if (loadError) {
+    <div class="empty-state error-state">
+      <span class="empty-icon">⚠️</span>
+      <p>{{ loadError }}</p>
+      <p class="empty-hint">Start the backend with: <code>cd backend && go run .</code></p>
+    </div>
+  } @else if (visibleBooks.length === 0) {
+    <div class="empty-state">
+      <span class="empty-icon">📭</span>
+      <p>No books found.</p>
+      <p class="empty-hint">
+        Go to the <a routerLink="/login">login page</a> and click &quot;Load demo data&quot; to add books, or try a different search.
+      </p>
+    </div>
+  } @else {
+    <div class="books-grid">
+      @for (book of visibleBooks; track book.id) {
+        <a [routerLink]="['/main/books', book.id]" class="book-card" data-testid="book-card">
+          <span class="book-badge" [class.available]="book.available_copies > 0" [class.unavailable]="book.available_copies === 0">
+            {{ book.available_copies > 0 ? book.available_copies + ' available' : 'Out of stock' }}
+          </span>
+          <h3 class="book-title">{{ book.title }}</h3>
+          <p class="book-author">{{ book.author }}</p>
+          @if (book.genre) {
+            <p class="book-genre">{{ book.genre }}</p>
+          }
+        </a>
+      }
+    </div>
+  }
+</div>

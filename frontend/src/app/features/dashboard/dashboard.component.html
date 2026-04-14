@@ -1,0 +1,46 @@
+<div class="dashboard">
+  <div class="dashboard-welcome">
+    <h2>Welcome, {{ auth.user()?.username ?? 'User' }}</h2>
+    <p class="subtitle">Your Library Management System</p>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Books in catalog</span>
+      <strong class="stat-value">{{ summary?.totalBooks ?? 0 }}</strong>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Copies available</span>
+      <strong class="stat-value">{{ summary?.availableBooks ?? 0 }}</strong>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Active borrowings</span>
+      <strong class="stat-value">{{ summary?.activeBorrowings ?? 0 }}</strong>
+    </div>
+  </div>
+  @if (loading) {
+    <p class="stats-hint">Loading dashboard summary...</p>
+  } @else if (error) {
+    <p class="stats-hint">{{ error }}</p>
+  } @else {
+    <p class="stats-hint">These values come from the live backend API.</p>
+  }
+  <div class="quick-links">
+    <a routerLink="/main/books" class="card card-books">
+      <span class="card-icon">📚</span>
+      <span class="card-title">Browse books</span>
+      <span class="card-desc">Search and borrow from the catalog</span>
+    </a>
+    <a routerLink="/main/my-borrowings" class="card card-borrowings">
+      <span class="card-icon">📖</span>
+      <span class="card-title">My borrowings</span>
+      <span class="card-desc">View and return borrowed books</span>
+    </a>
+    @if (auth.isAdmin()) {
+      <a routerLink="/main/admin/books" class="card card-admin">
+        <span class="card-icon">⚙️</span>
+        <span class="card-title">Manage books</span>
+        <span class="card-desc">Add, edit, or remove books</span>
+      </a>
+    }
+  </div>
+</div>
