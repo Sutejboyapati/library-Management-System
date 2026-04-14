@@ -1,0 +1,6 @@
+.env
+backend/.env
+frontend/
+backend/.gomodcache/
+backend/.gocache/
+backend/.gotmp/
