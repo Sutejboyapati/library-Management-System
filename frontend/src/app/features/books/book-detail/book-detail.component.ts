@@ -10,11 +10,11 @@ import { Review } from '../../../core/models/review.model';
 import { ReviewService } from '../../../core/services/review.service';
 
 @Component({
-  selector: 'app-il',
+  selector: 'app-book-detail',
   standalone: true,
   imports: [RouterLink, FormsModule, DatePipe],
-  templateUrl: './il.component.html',
-  styleUrl: './il.component.css',
+  templateUrl: './book-detail.component.html',
+  styleUrl: './book-detail.component.css',
 })
 export class BookDetailComponent implements OnInit {
   book: Book | null = null;

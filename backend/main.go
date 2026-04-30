@@ -14,18 +14,12 @@ import (
 )
 
 func main() {
-<<<<<<< HEAD
 	envMap, _ := godotenv.Read(".env")
 
 	port := envMap["PORT"]
 	if port == "" {
 		port = os.Getenv("PORT")
 	}
-=======
-	_ = godotenv.Load()
-
-	port := os.Getenv("PORT")
->>>>>>> 2bf3000141f874abc2bfb95f4c31477fae075504
 	if port == "" {
 		port = "3000"
 	}

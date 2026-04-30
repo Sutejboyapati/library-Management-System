@@ -57,8 +57,12 @@
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
-            "production": { "buildTarget": "library-management-frontend:build:production" },
-            "development": { "buildTarget": "library-management-frontend:build:development" }
+            "production": {
+              "buildTarget": "library-management-frontend:build:production"
+            },
+            "development": {
+              "buildTarget": "library-management-frontend:build:development"
+            }
           },
           "defaultConfiguration": "development"
         },
@@ -73,11 +77,8 @@
         }
       }
     }
-<<<<<<< HEAD
   },
   "cli": {
     "analytics": "aaca2769-9ad7-413d-bf3b-8071248bd47c"
-=======
->>>>>>> 2bf3000141f874abc2bfb95f4c31477fae075504
   }
 }
