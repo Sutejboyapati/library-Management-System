@@ -7,16 +7,12 @@ import (
 	"strings"
 	"time"
 
-<<<<<<< HEAD
 	"library/backend/apiutil"
-=======
->>>>>>> 2bf3000141f874abc2bfb95f4c31477fae075504
 	"library/backend/config"
 
 	"golang.org/x/crypto/bcrypt"
 )
 
-// Open Library API response (subset we need)
 type openLibrarySearch struct {
 	Docs []struct {
 		Title   string   `json:"title"`
@@ -26,15 +22,9 @@ type openLibrarySearch struct {
 	} `json:"docs"`
 }
 
-// Seed inserts admin user and fetches real books from Open Library API. Safe to call multiple times.
-// Add ?force=1 to clear existing books and reload from the internet.
 func Seed(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost && r.Method != http.MethodGet {
-<<<<<<< HEAD
 		apiutil.WriteError(w, http.StatusMethodNotAllowed, "Method not allowed")
-=======
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
->>>>>>> 2bf3000141f874abc2bfb95f4c31477fae075504
 		return
 	}
 
@@ -44,36 +34,23 @@ func Seed(w http.ResponseWriter, r *http.Request) {
 		_, _ = config.DB.Exec("DELETE FROM Books")
 	}
 
-	// Check if we already have books (skip if force)
 	var count int
 	err := config.DB.QueryRow("SELECT COUNT(*) FROM Books").Scan(&count)
 	if err != nil {
 		log.Println("Seed check:", err)
-<<<<<<< HEAD
 		apiutil.WriteError(w, http.StatusInternalServerError, "Database error")
 		return
 	}
 	if count > 0 {
 		apiutil.WriteJSON(w, http.StatusOK, map[string]interface{}{"message": "Data already seeded", "booksCount": count})
-=======
-		http.Error(w, "Database error", http.StatusInternalServerError)
-		return
-	}
-	if count > 0 {
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(map[string]interface{}{"message": "Data already seeded", "booksCount": count})
->>>>>>> 2bf3000141f874abc2bfb95f4c31477fae075504
 		return
 	}
 
-	// Insert admin user (password: admin123) - skip if exists
 	hash, _ := bcrypt.GenerateFromPassword([]byte("admin123"), bcrypt.DefaultCost)
 	_, _ = config.DB.Exec("INSERT IGNORE INTO Users (username, password, role) VALUES (?, ?, ?)", "admin", string(hash), "admin")
 
-	// Fetch books from Open Library API
 	added := fetchAndInsertBooksFromOpenLibrary()
 	if added == 0 {
-		// Fallback: insert a few hardcoded books if API fails
 		fallbackBooks := []struct {
 			title  string
 			author string
@@ -95,13 +72,7 @@ func Seed(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-<<<<<<< HEAD
 	apiutil.WriteJSON(w, http.StatusCreated, map[string]interface{}{"message": "Books loaded from Open Library", "booksAdded": added})
-=======
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(map[string]interface{}{"message": "Books loaded from Open Library", "booksAdded": added})
->>>>>>> 2bf3000141f874abc2bfb95f4c31477fae075504
 }
 
 func fetchAndInsertBooksFromOpenLibrary() int {
