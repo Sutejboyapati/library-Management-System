@@ -52,7 +52,6 @@ func InitDB() error {
 	log.Println("Connected to database")
 	DB = db
 
-	// Auto-create tables if they don't exist
 	if err := initSchema(db); err != nil {
 		return fmt.Errorf("init schema: %w", err)
 	}
@@ -60,7 +59,6 @@ func InitDB() error {
 	return nil
 }
 
-// initSchema creates tables if they don't exist.
 func initSchema(db *sql.DB) error {
 	stmt := []string{
 		`CREATE TABLE IF NOT EXISTS Users (
@@ -91,7 +89,6 @@ func initSchema(db *sql.DB) error {
 			FOREIGN KEY (user_id) REFERENCES Users(id),
 			FOREIGN KEY (book_id) REFERENCES Books(id)
 		)`,
-<<<<<<< HEAD
 		`CREATE TABLE IF NOT EXISTS Reviews (
 			id INT AUTO_INCREMENT PRIMARY KEY,
 			user_id INT NOT NULL,
@@ -104,9 +101,8 @@ func initSchema(db *sql.DB) error {
 			FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
 			FOREIGN KEY (book_id) REFERENCES Books(id) ON DELETE CASCADE
 		)`,
-=======
->>>>>>> 2bf3000141f874abc2bfb95f4c31477fae075504
 	}
+
 	for _, s := range stmt {
 		if _, err := db.Exec(s); err != nil {
 			return fmt.Errorf("create table: %w", err)
